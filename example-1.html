@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 1: Failure Communicated Via Return Type</title>
+    </head>
+    <body>
+        <input id="numberInput" type="text" />
+        <div id="result">
+
+        </div>
+        <script>
+            window.onload = () => {
+                document.querySelector('#numberInput').addEventListener('change', (event) => {
+                    /*
+                     * The parseInt() function converts a string to a Number.
+                     * If the string is not a valid number, the special value
+                     * NaN is returned. parseInt() communicates failure back to
+                     * the caller by returning the special value NaN.
+                     */
+                    const numberValue = parseInt(event.target.value, 10);
+
+                    document.querySelector('#result').textContent = 
+                        isNaN(numberValue) ?
+                        'You did not enter a number.' :
+                        `You entered ${numberValue}.`;
+                    
+                });
+            };
+        </script>
+    </body>
+</html>
